@@ -1,3 +1,4 @@
+//APLICAÇÃO
 const express = require('express')
 const routes = require('./server/routes/index')
 const app = express()
