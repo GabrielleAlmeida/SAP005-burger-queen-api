@@ -13,10 +13,10 @@ router.get("/user/:uid",UsersController.getUserUid);
 router.post("/",UsersController.postUser);
 
 //  PUT /users/:uid
-router.put("/user/:uid",UsersController.putUserUid);
+// router.put("/user/:uid",UsersController.putUserUid);
 
 //  DELETE /users/:uid
-router.delete("/user/:uid",UsersController.deleteUserUid);
+// router.delete("/user/:uid",UsersController.deleteUserUid);   
 
 module.exports = router
 
