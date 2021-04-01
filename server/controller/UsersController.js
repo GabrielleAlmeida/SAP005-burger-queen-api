@@ -45,17 +45,51 @@ class UsersController {
     }
   }
 
-//   // PUT /users/:uid
-//   const putUserUid = (req, res) => {
-//       const uid = req.params.uid
-//       res.send("Request put feita com o uid: " + uid)
-//   }
+  // PUT /users/:uid
+  static async putUserUid(req, res) {
+    try {
+      const { uid } = req.params;
+      const [updateUser] = await dataBase.User.update(req.body, {
+        where: { id: uid },
+      });
+      if (updateUser) {
+        const updatedUser = await dataBase.User.findAll({
+          where: {
+            id: Number(uid),
+          },
+        });
+        return res.status(200).json({ user: updatedUser });
+      }
+      res.status(404).json({
+        message: 'Usuário não encontrado'
+      })
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  }
 
-//   // DELETE /users/:uid
-//   const deleteUserUid = (req, res) => {
-//       const uid = req.params.uid
-//       res.send("Request delete feita com o uid: " + uid)
-//   }
+  //   // DELETE /users/:uid
+  static async deleteUserUid(req, res) {
+    try {
+      const { uid } = req.params;
+      const destroyedUsers = await dataBase.User.destroy({
+        where: { id: uid },
+      });
+
+      if (destroyedUsers > 0) {
+        res.status(200).json({ 
+          message: 'Usuário excluído com sucesso'
+        })
+      }
+
+      res.status(404).json({
+        message: 'Usuário não encontrado'
+      })
+
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
 }
 
 module.exports = UsersController;
