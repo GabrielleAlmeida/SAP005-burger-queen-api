@@ -16,7 +16,7 @@ router.post("/",UsersController.postUser);
 router.put("/user/:uid",UsersController.putUserUid);
 
 //  DELETE /users/:uid
-router.delete("/user/:uid",UsersController.deleteUserUid);
+router.delete("/user/:uid",UsersController.deleteUserUid);   
 
 module.exports = router
 
