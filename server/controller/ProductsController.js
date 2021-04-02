@@ -1,53 +1,36 @@
 // aqui vai o código que acessa o banco de dados
 //Seviço - funções a serem executadas
+const dataBase = require("../db/models");
 
-//  GET /products
-const getAllProducts = (req, res) => {
-    const payload = [{
-        data: {
-            message: 'get feito com sucesso'
-        }
-    },{
-        data: {
-            message: 'get feito com sucesso'
-        }
-    },
-    {
-        data: {
-            message: 'get feito com sucesso'
-        }
-    },
-]
-    res.send(payload)
-} 
+class ProductsController {
+  //  GET /products
+    static async getAllProducts(req, res) {
+        
+    }
 
-//  GET /products/:productid
-const getProductUid = (req, res) => {
-    const uid = req.params.uid
-    res.send("Request get product feita com o uid: " + uid)
-} 
+  //  GET /products/:productid
+    static async getProductUid(req, res) {}
 
-//  POST /products
-const postProducts = (req, res) => {
-    res.send("Request products feita: post")
-} 
+  //  POST /products
+    static async postProducts(req, res) {}
 
-//  PUT /products/:productid
-const putProductUid = (req, res) => {
-    const uid = req.params.uid
-    res.send("Request products put feita com o uid: " + uid)
-} 
+  //  PUT /products/:productid
+    static async putProductUid(req, res) {}
 
-//  DELETE /products/:productid
-const deleteProductUid = (req, res) => {
-    const uid = req.params.uid
-    res.send("Request products delete feita com o uid: " + uid)
-} 
-
-module.exports = {
-    getAllProducts,
-    getProductUid,
-    postProducts,
-    putProductUid,
-    deleteProductUid
+ //  DELETE /products/:productid
+    static async deleteProductUid(req, res) {}
 }
+
+module.exports = ProductsController;
+
+// module.exports = {
+//     getAllProducts,
+//     getProductUid,
+//     postProducts,
+//     putProductUid,
+//     deleteProductUid
+// }
+
+// const uid = req.params.uid
+// res.send("Request products delete feita com o uid: " + uid)
+// }
